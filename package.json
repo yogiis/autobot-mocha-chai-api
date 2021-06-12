@@ -4,11 +4,16 @@
   "description": "starter repository to learn api test with javascript",
   "dependencies": {
     "chai": "4.2.0",
-    "supertest": "4.0.2",
-    "mocha": "8.1.0"
+    "chai-json-schema": "^1.5.1",
+    "dotenv": "^8.2.0",
+    "mocha": "8.1.0",
+    "supertest": "4.0.2"
   },
   "scripts": {
-    "test": "mocha ./mytest.js --recursive --reporter mochawesome --reporter-options reportDir=reports/mochawesome/ --timeout 10000"
+    "test": "mocha ./mytest.js --parallel --recursive --reporter mochawesome --reporter-options reportDir=reports/mochawesome/ --timeout 10000",
+    "test-po": "mocha ./tests --recursive --reporter mochawesome --reporter-options reportDir=reports/mochawesome/ --timeout 30000 --grep '@geter|@getest'",
+    "test-skip": "mocha ./tests --recursive --reporter mochawesome --reporter-options reportDir=reports/mochawesome/ --timeout 30000 --grep @post --invert",
+    "tests": "mocha ./tests --recursive --reporter mochawesome --reporter-options reportDir=reports/mochawesome/ --timeout 30000"
   },
   "repository": {
     "type": "git",
@@ -21,6 +26,6 @@
   },
   "homepage": "https://github.com/atlasidtech/learn-api-test-js#readme",
   "devDependencies": {
-    "mochawesome": "^6.1.1"
+    "mochawesome": "^6.2.1"
   }
 }
